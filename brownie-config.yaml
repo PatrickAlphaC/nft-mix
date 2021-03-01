@@ -1,0 +1,48 @@
+# exclude SafeMath when calculating test coverage
+# https://eth-brownie.readthedocs.io/en/v1.10.3/config.html#exclude_paths
+reports:
+  exclude_contracts:
+    - SafeMath
+dependencies:
+  - alphachainio/chainlink-contracts@1.1.2
+  - OpenZeppelin/openzeppelin-contracts@3.4.0
+compiler:
+  solc:
+    remappings:
+      - '@chainlink=alphachainio/chainlink-contracts@1.1.2'
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0'
+# automatically fetch contract sources from Etherscan
+autofetch_sources: True
+# set a custom mnemonic for the development network
+networks:
+  default: development
+  kovan:
+    vrf_coordinator: '0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9'
+    link_token: '0xa36085F69e2889c224210F603D836748e7dC0088'
+    keyhash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4'
+    fee: 100000000000000000
+    oracle: '0x2f90A6D021db21e1B2A077c5a37B3C7E75D15b7e'
+    jobId: '29fa9aa13bf1468788b7cc4a500a45b8'
+    eth_usd_price_feed: '0x9326BFA02ADD2366b30bacB125260Af641031331'
+  rinkeby:
+    vrf_coordinator: '0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B'
+    link_token: '0x01be23585060835e02b77ef475b0cc51aa1e0709'
+    keyhash: '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311'
+    fee: 100000000000000000
+    oracle: '0x7AFe1118Ea78C1eae84ca8feE5C65Bc76CcF879e'
+    jobId: '6d1bfe27e7034b1d87b5270556b17277'
+    eth_usd_price_feed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e'
+  mumbai:
+    eth_usd_price_feed: '0x0715A7794a1dc8e42615F059dD6e406A6594651A'
+  binance:
+    # link_token: ??
+    eth_usd_price_feed: '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e'
+  binance-fork:
+    eth_usd_price_feed: '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e'
+  mainnet-fork:
+    eth_usd_price_feed: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
+  matic-fork:
+    eth_usd_price_feed: '0xF9680D99D6C9589e2a93a78A04A279e509205945'
+wallets:
+  from_key: PRIVATE_KEY
+  # could also do from_mnemonic, and you'd have to change the accounts.add to accounts.from_mnemonic
