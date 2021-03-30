@@ -2,6 +2,9 @@
 import os
 from brownie import AdvancedCollectible, accounts, config
 import time
+# This loads the env file
+from dotenv import load_dotenv
+load_dotenv()
 
 STATIC_SEED = 123
 

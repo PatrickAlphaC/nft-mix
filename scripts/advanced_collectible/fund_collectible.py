@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import os
 from brownie import AdvancedCollectible, accounts, network, interface, config
+# This loads the env file
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def main():

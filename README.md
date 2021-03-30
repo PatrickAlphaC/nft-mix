@@ -41,8 +41,17 @@ npm install @openzeppelin/contracts
 
 
 If you want to be able to deploy to testnets, do the following. 
+4. Set your environment variables
 
-Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html). You can get this by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura. You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/). 
+Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html). 
+
+You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/). 
+
+You can add your environment variables to the `.env` file:
+```
+export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
+export PRIVATE_KEY=<PRIVATE_KEY>
+```
 
 For those not familiar with environment variables, just run:
 ```
@@ -50,6 +59,7 @@ export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
 export PRIVATE_KEY=<PRIVATE_KEY>
 ```
 Just know, that when you restart your shell/terminal, these environment variables are removed. 
+
 
 # Useage
 
