@@ -61,6 +61,8 @@ They each deploy unique dogs. The advanced version gives you a random breed (out
 
 The advanced collection uses a [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number) to deploy the random dog. 
 
+You can 100% use the rinkeby testnet to see your NFTs rendered on opensea, but it's suggested that you test and build on a local development network so you don't have to wait as long for transactions. 
+
 ### Running Scripts
 
 The simple collectibles work on a local network,  however the advanced requires a testnet. We default to rinkeby since that seems to be the testing standard for NFT platforms.
@@ -86,7 +88,6 @@ brownie run scripts/advanced_collectible/create_collectible.py --network rinkeby
 ```
 brownie test
 ```
-(Tests are weak at the moment)
 
 ## Resources
 
@@ -98,6 +99,7 @@ To get started with Brownie:
 * ["Getting Started with Brownie"](https://medium.com/@iamdefinitelyahuman/getting-started-with-brownie-part-1-9b2181f4cb99) is a good tutorial to help you familiarize yourself with Brownie.
 * For more in-depth information, read the [Brownie documentation](https://eth-brownie.readthedocs.io/en/stable/).
 
+Shoutout to [TheLinkMarines](https://twitter.com/TheLinkMarines) on twitter for the puppies!
 
 Any questions? Join our [Discord](https://discord.gg/2YHSAey)
 
