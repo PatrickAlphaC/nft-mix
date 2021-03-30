@@ -53,12 +53,7 @@ export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
 export PRIVATE_KEY=<PRIVATE_KEY>
 ```
 
-For those not familiar with environment variables, just run:
-```
-export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
-export PRIVATE_KEY=<PRIVATE_KEY>
-```
-Just know, that when you restart your shell/terminal, these environment variables are removed. 
+Or you can run the above in your shell. 
 
 
 # Useage
