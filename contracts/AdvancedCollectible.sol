@@ -44,5 +44,6 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
         Breed breed = Breed(randomNumber % 3); 
         tokenIdToBreed[newItemId] = breed;
         requestIdToTokenId[requestId] = newItemId;
+        tokenCounter = tokenCounter + 1;
     }
 }

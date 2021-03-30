@@ -3,7 +3,7 @@
 <br/>
 <p align="center">
 <a href="https://chain.link" target="_blank">
-<img src="https://raw.githubusercontent.com/smartcontractkit/chainlink-mix/master/img/chainlink-brownie.png" width="225" alt="Chainlink Brownie logo">
+<img src="https://raw.githubusercontent.com/PatrickAlphaC/nft-mix/main/img/pug.png" width="225" alt="NFT Pug">
 </a>
 </p>
 <br/>
@@ -67,8 +67,8 @@ The simple collectibles work on a local network,  however the advanced requires 
 
 # For the Simple ERC721
 ```
-brownie run scripts/simple_collectible/deploy_simple.py
-brownie run scripts/simple_collectible/create_collectible.py
+brownie run scripts/simple_collectible/deploy_simple.py --network rinkeby
+brownie run scripts/simple_collectible/create_collectible.py --network rinkeby
 ```
 
 # For the Advanced ERC721
