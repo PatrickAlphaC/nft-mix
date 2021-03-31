@@ -86,7 +86,6 @@ You'll need [testnet Rinkeby](https://faucet.rinkeby.io/) and [testnet LINK](htt
 brownie run scripts/advanced_collectible/deploy_advanced.py --network rinkeby
 brownie run scripts/advanced_collectible/create_collectible.py --network rinkeby
 ```
-And after some time, (you may have to wait up to 20 minutes for it to render on opensea), you should see your NFT on opensea! [It'll look something like this.](https://testnets.opensea.io/assets/0x8acb7ca932892eb83e4411b59309d44dddbc4cdf/0)
 
 ## Verify on Etherscan
 
@@ -111,7 +110,7 @@ Run
 ```
 brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
 ```
-It may take some time for the image to render on opensea. So take your time here!
+And after some time, (you may have to wait up to 20 minutes for it to render on opensea), you should see your NFT on opensea! [It'll look something like this.](https://testnets.opensea.io/assets/0x8acb7ca932892eb83e4411b59309d44dddbc4cdf/0)
 ## Testing
 
 ```
