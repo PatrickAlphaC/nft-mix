@@ -39,8 +39,8 @@ npm install -g ganache-cli
 npm install @openzeppelin/contracts
 ```
 
-
 If you want to be able to deploy to testnets, do the following. 
+
 4. Set your environment variables
 
 Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html). 
