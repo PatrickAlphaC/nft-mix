@@ -70,7 +70,7 @@ You can 100% use the rinkeby testnet to see your NFTs rendered on opensea, but i
 
 ### Running Scripts
 
-The simple collectibles work on a local network,  however the advanced requires a testnet. We default to rinkeby since that seems to be the testing standard for NFT platforms.
+The simple collectibles work on a local network,  however the advanced requires a testnet. We default to rinkeby since that seems to be the testing standard for NFT platforms. You will need testnet rinkeby ETH and testnet Rinkeby LINK. You can find faucets for both in the [Chainlink documentation](https://docs.chain.link/docs/link-token-contracts#rinkeby). 
 
 # For the Simple ERC721
 ```
@@ -84,10 +84,34 @@ You'll need [testnet Rinkeby](https://faucet.rinkeby.io/) and [testnet LINK](htt
 
 ```
 brownie run scripts/advanced_collectible/deploy_advanced.py --network rinkeby
-brownie run scripts/advanced_collectible/fund_collectible.py --network rinkeby
 brownie run scripts/advanced_collectible/create_collectible.py --network rinkeby
 ```
+And after some time, (you may have to wait up to 20 minutes for it to render on opensea), you should see your NFT on opensea! [It'll look something like this.](https://testnets.opensea.io/assets/0x8acb7ca932892eb83e4411b59309d44dddbc4cdf/0)
 
+## Verify on Etherscan
+
+Currently, the advanced collectibles contract has an issue with ERC721 and the Chainlink contracts, so they have be verified manually. However, the simple contract can be verified if you just set your `ETHERSCAN_TOKEN`. 
+
+### Misc
+There are some helpful scripts in `helpful_scripts.py`.
+
+# Viewing on OpenSea
+After running the scripts from the `For the Advanced ERC721` section
+
+1. Create the metadata
+Run
+```
+brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
+```
+The metadata has already been created if you've just cloned the repo. 
+
+2. SKIP THIS STEP IF YOU WANT TO USE PATRICK'S METADATA. Add the file created in `metadata/rinkeby/NAME.json` to [IPFS](https://ipfs.io/) or [Pinata](https://pinata.cloud/).
+3. Set the tokenURI 
+Run
+```
+brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
+```
+It may take some time for the image to render on opensea. So take your time here!
 ## Testing
 
 ```
