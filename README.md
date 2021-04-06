@@ -32,11 +32,10 @@ git clone https://github.com/PatrickAlphaC/nft-mix
 cd nft-mix
 ```
 
-3. [Install ganache-cli](https://www.npmjs.com/package/ganache-cli) and [openzepplin contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)
+1. [Install ganache-cli](https://www.npmjs.com/package/ganache-cli)
 
 ```bash
 npm install -g ganache-cli
-npm install @openzeppelin/contracts
 ```
 
 If you want to be able to deploy to testnets, do the following. 
