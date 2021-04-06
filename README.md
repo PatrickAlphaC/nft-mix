@@ -47,6 +47,8 @@ Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](htt
 
 You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/). 
 
+You'll also need testnet rinkeby ETH and LINK. You can get LINK and ETH into your wallet by using the [rinkeby faucets located here](https://docs.chain.link/docs/link-token-contracts#rinkeby). If you're new to this, [watch this video.](https://www.youtube.com/watch?v=P7FX_1PePX0)
+
 You can add your environment variables to the `.env` file:
 
 ```

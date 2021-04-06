@@ -1,5 +1,5 @@
 import pytest
-from brownie import network, AdvancedCollectible, convert
+from brownie import network, AdvancedCollectible
 
 
 def test_can_create_advanced_collectible(
