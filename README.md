@@ -28,8 +28,8 @@ pip install eth-brownie
 
 2. Clone this repo
 ```
-git clone https://github.com/PatrickAlphaC/nft-mix
-cd nft-mix
+brownie bake nft-mix
+cd nft
 ```
 
 1. [Install ganache-cli](https://www.npmjs.com/package/ganache-cli)
