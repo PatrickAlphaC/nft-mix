@@ -3,15 +3,13 @@ import os
 from brownie import AdvancedCollectible, accounts, config
 from scripts.helpful_scripts import get_breed, fund_advanced_collectible
 import time
-# This loads the env file
-from dotenv import load_dotenv
-load_dotenv()
+
 
 STATIC_SEED = 123
 
 
 def main():
-    dev = accounts.add(os.getenv(config['wallets']['from_key']))
+    dev = accounts.add(config['wallets']['from_key'])
     advanced_collectible = AdvancedCollectible[len(AdvancedCollectible) - 1]
     fund_advanced_collectible(advanced_collectible)
     transaction = advanced_collectible.createCollectible(

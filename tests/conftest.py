@@ -22,7 +22,7 @@ def get_account():
     if network.show_active() == 'development' or network.show_active() == 'mainnet-fork':
         return accounts[0]
     if network.show_active() in config['networks']:
-        dev_account = accounts.add(os.getenv(config['wallets']['from_key']))
+        dev_account = accounts.add(config['wallets']['from_key'])
         return dev_account
     else:
         pytest.skip('Invalid network/wallet specified ')

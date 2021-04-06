@@ -5,9 +5,7 @@ from metadata import sample_metadata
 import json
 from scripts.helpful_scripts import get_breed
 from pathlib import Path
-# This loads the env file
-from dotenv import load_dotenv
-load_dotenv()
+
 
 PUG_METADATA = 'https://ipfs.io/ipfs/Qmd9MCGtdVz2miNumBHDbvj8bigSgTwnr4SbyH6DNnpWdt?filename=1-PUG.json'
 OPENSEA_FORMAT = 'https://testnets.opensea.io/assets/{}/{}'
@@ -20,7 +18,7 @@ def main():
 
 
 def set_tokenURI(token_id, nft_contract, tokenURI):
-    dev = accounts.add(os.getenv(config['wallets']['from_key']))
+    dev = accounts.add(config['wallets']['from_key'])
     nft_contract.setTokenURI(token_id, tokenURI, {'from': dev})
     print("Awesome! You can view your NFT at {}".format(
         OPENSEA_FORMAT.format(nft_contract.address, token_id)))

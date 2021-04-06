@@ -4,15 +4,16 @@ reports:
   exclude_contracts:
     - SafeMath
 dependencies:
-  - alphachainio/chainlink-contracts@1.1.2
+  - smartcontractkit/chainlink-brownie-contracts@1.0.2
   - OpenZeppelin/openzeppelin-contracts@3.4.0
 compiler:
   solc:
     remappings:
-      - '@chainlink=alphachainio/chainlink-contracts@1.1.2'
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.0.2'
       - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0'
 # automatically fetch contract sources from Etherscan
 autofetch_sources: True
+dotenv: .env
 # set a custom mnemonic for the development network
 networks:
   default: development
@@ -32,7 +33,6 @@ networks:
     oracle: '0x7AFe1118Ea78C1eae84ca8feE5C65Bc76CcF879e'
     jobId: '6d1bfe27e7034b1d87b5270556b17277'
     eth_usd_price_feed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e'
-
   mumbai:
     eth_usd_price_feed: '0x0715A7794a1dc8e42615F059dD6e406A6594651A'
   binance:
@@ -45,5 +45,6 @@ networks:
   matic-fork:
     eth_usd_price_feed: '0xF9680D99D6C9589e2a93a78A04A279e509205945'
 wallets:
-  from_key: PRIVATE_KEY
-  # could also do from_mnemonic, and you'd have to change the accounts.add to accounts.from_mnemonic
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
+  # You'd have to change the accounts.add to accounts.from_mnemonic to use from_mnemonic

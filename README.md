@@ -48,10 +48,15 @@ Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](htt
 You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/). 
 
 You can add your environment variables to the `.env` file:
+
 ```
 export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
 export PRIVATE_KEY=<PRIVATE_KEY>
 ```
+
+AND THEN RUN `source .env` TO ACTIVATE THE ENV VARIABLES
+(You'll need to do this everytime you open a new terminal, or [learn how to set them easier](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html))
+
 
 Or you can run the above in your shell. 
 
@@ -86,8 +91,15 @@ You'll need [testnet Rinkeby](https://faucet.rinkeby.io/) and [testnet LINK](htt
 brownie run scripts/advanced_collectible/deploy_advanced.py --network rinkeby
 brownie run scripts/advanced_collectible/create_collectible.py --network rinkeby
 ```
+Then:
+```
+brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
+brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
+```
 
 ## Verify on Etherscan
+
+> Looking for help fixing this!
 
 Currently, the advanced collectibles contract has an issue with ERC721 and the Chainlink contracts, so they have be verified manually. However, the simple contract can be verified if you just set your `ETHERSCAN_TOKEN`. 
 
@@ -98,14 +110,31 @@ There are some helpful scripts in `helpful_scripts.py`.
 After running the scripts from the `For the Advanced ERC721` section
 
 1. Create the metadata
-Run
+
+Metadata is the URI needed to upload data. You can either:
+- Upload to IPFS yourself
+- Use the metadata already created when you cloned this repo. 
+
+### If you want to upload to IPFS yourself
+
+Download [IPFS](https://ipfs.io/) 
+Set `export IPFS_URL=http://127.0.0.1:5001` and `export UPLOAD_IPFS=true` environment variables
+Run the IPFS daemon: `ipfs daemon`
+Then Run
 ```
 brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
 ```
-The metadata has already been created if you've just cloned the repo. 
 
-2. SKIP THIS STEP IF YOU WANT TO USE PATRICK'S METADATA. Add the file created in `metadata/rinkeby/NAME.json` to [IPFS](https://ipfs.io/) or [Pinata](https://pinata.cloud/).
-3. Set the tokenURI 
+Alternatively, you could upload the uri manually:
+Add the file created in `metadata/rinkeby/NAME.json` to [IPFS](https://ipfs.io/) or [Pinata](https://pinata.cloud/). 
+### If you want to use the metadata from this repo
+
+Just run:
+```
+brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
+```
+
+2. Set the tokenURI 
 Run
 ```
 brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
