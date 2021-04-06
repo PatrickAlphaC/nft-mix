@@ -2,7 +2,6 @@
 from brownie import SimpleCollectible, AdvancedCollectible, accounts, network, config
 from metadata import sample_metadata
 from scripts.helpful_scripts import get_breed
-from pathlib import Path
 
 
 def main():

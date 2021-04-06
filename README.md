@@ -146,6 +146,15 @@ And after some time, (you may have to wait up to 20 minutes for it to render on 
 brownie test
 ```
 
+## Linting
+
+```
+pip install black 
+pip install autoflake
+autoflake --in-place --remove-unused-variables -r .
+black .
+```
+
 ## Resources
 
 To get started with Brownie:

@@ -1,6 +1,4 @@
-
 #!/usr/bin/python3
-import os
 from brownie import AdvancedCollectible, accounts, network, config, interface
 import json
 
@@ -10,6 +8,6 @@ def main():
 
 
 def flatten():
-    file = open('./AdvancedCollectible_flattened.json', 'w')
+    file = open("./AdvancedCollectible_flattened.json", "w")
     json.dump(AdvancedCollectible.get_verification_info(), file)
     file.close()
