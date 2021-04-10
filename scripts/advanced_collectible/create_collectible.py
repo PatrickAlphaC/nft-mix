@@ -17,6 +17,7 @@ def main():
     print("Waiting on second transaction...")
     # wait for the 2nd transaction
     transaction.wait(1)
+    time.sleep(35)
     requestId = transaction.events["requestedCollectible"]["requestId"]
     token_id = advanced_collectible.requestIdToTokenId(requestId)
     breed = get_breed(advanced_collectible.tokenIdToBreed(token_id))
