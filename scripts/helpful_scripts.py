@@ -12,6 +12,5 @@ def fund_advanced_collectible(nft_contract):
     interface.LinkTokenInterface(
         config["networks"][network.show_active()]["link_token"]
     ).transfer(
-        nft_contract, config["networks"][network.show_active()]["fee"], {
-            "from": dev}
+        nft_contract, config["networks"][network.show_active()]["fee"], {"from": dev}
     )
