@@ -56,29 +56,29 @@ def write_metadata(token_ids, nft_contract):
             if os.getenv("UPLOAD_IPFS") == "true":
                 image_path = "./img/{}.png".format(
                     breed.lower().replace('_', '-'))
-                image_to_upload = upload_nft(
-                    image_path=image_path)
+                image_to_upload = upload_to_ipfs(image_path)
             image_to_upload = (
                 breed_to_image_uri[breed] if not image_to_upload else image_to_upload
             )
             collectible_metadata["image"] = image_to_upload
             file = open(metadata_file_name, "w")
             json.dump(collectible_metadata, file)
+            upload_to_ipfs(metadata_file_name)
 
 
-def upload_nft(image_path="./img/pug.png"):
-    with Path(image_path).open("rb") as fp:
+def upload_to_ipfs(filepath):
+    with Path(filepath).open("rb") as fp:
         image_binary = fp.read()
-    ipfs_url = (
-        os.getenv("IPFS_URL")
-        if os.getenv("IPFS_URL")
-        else "https://ipfs.infura.io:5001/"
-    )
-    response = requests.post(ipfs_url + "/api/v0/add",
-                             files={"file": image_binary})
-    ipfs_hash = response.json()["Hash"]
-    filename = image_path.split("/")[-1:][0]
-    image_uri = "https://ipfs.io/ipfs/{}?filename={}".format(
-        ipfs_hash, filename)
-    print(image_uri)
+        ipfs_url = (
+            os.getenv("IPFS_URL")
+            if os.getenv("IPFS_URL")
+            else "http://localhost:5001"
+        )
+        response = requests.post(ipfs_url + "/api/v0/add",
+                                 files={"file": image_binary})
+        ipfs_hash = response.json()["Hash"]
+        filename = filepath.split("/")[-1:][0]
+        image_uri = "https://ipfs.io/ipfs/{}?filename={}".format(
+            ipfs_hash, filename)
+        print(image_uri)
     return image_uri
