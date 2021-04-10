@@ -5,7 +5,7 @@ import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 
 contract AdvancedCollectible is ERC721, VRFConsumerBase {
     uint256 public tokenCounter;
-    enum Breed{PUG, SHIBA_INU, BRENARD}
+    enum Breed{PUG, SHIBA_INU, ST_BERNARD}
     // add other things
     mapping(bytes32 => address) public requestIdToSender;
     mapping(bytes32 => string) public requestIdToTokenURI;
@@ -16,7 +16,7 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
 
     bytes32 internal keyHash;
     uint256 internal fee;
-    uint256 public randomResult;
+    
     constructor(address _VRFCoordinator, address _LinkToken, bytes32 _keyhash)
     public 
     VRFConsumerBase(_VRFCoordinator, _LinkToken)

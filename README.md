@@ -70,7 +70,7 @@ There are 2 types of NFTs here.
 1. `SimpleCollectibles.sol`
 2. `AdvancedCollectibles.sol`
 
-They each deploy unique dogs. The advanced version gives you a random breed (out of a Pug, Shiba Inu, and St. Brenard).
+They each deploy unique dogs. The advanced version gives you a random breed (out of a Pug, Shiba Inu, and St. Bernard).
 
 The advanced collection uses a [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number) to deploy the random dog. 
 

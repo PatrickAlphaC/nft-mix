@@ -10,15 +10,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
-pug_uri = "https://ipfs.io/ipfs/QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8?filename=pug.png"
+breed_to_image_uri = {
+    'PUG': "https://ipfs.io/ipfs/QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8?filename=pug.png",
+    'SHIBA_INU': "https://ipfs.io/ipfs/QmYx6GsYAKnNzZ9A6NvEKV9nf1VaDzJrqDR23Y8YSkebLU?filename=shiba-inu.png",
+    'ST_BERNARD': "https://ipfs.io/ipfs/QmUPjADFGEKmfohdTaNcWhp7VGk26h5jXDA7v3VtTnTLcW?filename=st-bernard.png"
+}
 
 
 def main():
     print("Working on " + network.show_active())
     advanced_collectible = AdvancedCollectible[len(AdvancedCollectible) - 1]
     number_of_advanced_collectibles = advanced_collectible.tokenCounter()
-    print(number_of_advanced_collectibles)
+    print("The number of tokens you've deployed is: " +
+          str(number_of_advanced_collectibles))
     write_metadata(number_of_advanced_collectibles, advanced_collectible)
 
 
@@ -35,9 +39,9 @@ def write_metadata(token_ids, nft_contract):
         )
         if Path(metadata_file_name).exists():
             print(
-                "{} already found, delete it to overwrite!".format(metadata_file_name)
+                "{} already found, delete it to overwrite!".format(
+                    metadata_file_name)
             )
-            continue
         else:
             print("Creating Metadata file: " + metadata_file_name)
             collectible_metadata["name"] = get_breed(
@@ -46,9 +50,11 @@ def write_metadata(token_ids, nft_contract):
             collectible_metadata["description"] = "An adorable {} pup!".format(
                 collectible_metadata["name"]
             )
+            image_to_upload = None
             if os.getenv("UPLOAD_IPFS") == "true":
-                pug_uri = upload_nft()
-            collectible_metadata["image"] = pug_uri
+                image_to_upload = upload_nft()
+            image_to_upload = breed_to_image_uri[breed] if not image_to_upload else image_to_upload
+            collectible_metadata["image"] = image_to_upload
             file = open(metadata_file_name, "w")
             json.dump(collectible_metadata, file)
 
@@ -61,9 +67,11 @@ def upload_nft(image_path="./img/pug.png"):
         if os.getenv("IPFS_URL")
         else "https://ipfs.infura.io:5001/"
     )
-    response = requests.post(ipfs_url + "/api/v0/add", files={"file": image_binary})
+    response = requests.post(ipfs_url + "/api/v0/add",
+                             files={"file": image_binary})
     ipfs_hash = response.json()["Hash"]
     filename = image_path.split("/")[-1:][0]
-    image_uri = "https://ipfs.io/ipfs/{}?filename={}".format(ipfs_hash, filename)
+    image_uri = "https://ipfs.io/ipfs/{}?filename={}".format(
+        ipfs_hash, filename)
     print(image_uri)
     return image_uri

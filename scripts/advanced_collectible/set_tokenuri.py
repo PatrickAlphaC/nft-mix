@@ -4,14 +4,28 @@ from metadata import sample_metadata
 from scripts.helpful_scripts import get_breed
 
 
-PUG_METADATA = "https://ipfs.io/ipfs/Qmd9MCGtdVz2miNumBHDbvj8bigSgTwnr4SbyH6DNnpWdt?filename=1-PUG.json"
+dog_metadata_dic = {
+    'PUG': "https://ipfs.io/ipfs/Qmd9MCGtdVz2miNumBHDbvj8bigSgTwnr4SbyH6DNnpWdt?filename=0-PUG.json",
+    'SHIBA_INU': "https://ipfs.io/ipfs/QmQbvDdVXKc5FyTaiYaCsvHAzroF7d6Fa8fGtEBYvPMtrk?filename=1-SHIBA_INU.json",
+    'ST_BERNARD': "https://ipfs.io/ipfs/QmbBnUjyHHN7Ytq9xDsYF9sucZdDJLRkWz7vnZfrjMXMxs?filename=2-ST_BERNARD.json"
+}
 OPENSEA_FORMAT = "https://testnets.opensea.io/assets/{}/{}"
 
 
 def main():
     print("Working on " + network.show_active())
-    advanced_collectible = AdvancedCollectible[len(SimpleCollectible) - 1]
-    set_tokenURI(0, advanced_collectible, PUG_METADATA)
+    advanced_collectible = AdvancedCollectible[len(AdvancedCollectible) - 1]
+    number_of_advanced_collectibles = advanced_collectible.tokenCounter()
+    print("The number of tokens you've deployed is: " +
+          str(number_of_advanced_collectibles))
+    for token_id in range(number_of_advanced_collectibles):
+        breed = get_breed(advanced_collectible.tokenIdToBreed(token_id))
+        if not advanced_collectible.tokenURI(token_id).startswith("https://"):
+            print("Setting tokenURI of {}".format(token_id))
+            set_tokenURI(token_id, advanced_collectible,
+                         dog_metadata_dic[breed])
+        else:
+            print("Skipping {}, we already set that tokenURI!".format(token_id))
 
 
 def set_tokenURI(token_id, nft_contract, tokenURI):
