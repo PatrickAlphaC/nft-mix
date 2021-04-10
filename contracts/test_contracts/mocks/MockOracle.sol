@@ -4,14 +4,14 @@ pragma solidity ^0.6.0;
 import "@chainlink/contracts/src/v0.6/LinkTokenReceiver.sol";
 import "@chainlink/contracts/src/v0.6/interfaces/ChainlinkRequestInterface.sol";
 import "@chainlink/contracts/src/v0.6/interfaces/LinkTokenInterface.sol";
-import "@chainlink/contracts/src/v0.6/vendor/SafeMath.sol";
+import "@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol";
 
 /**
  * @title The Chainlink Mock Oracle contract
  * @notice Chainlink smart contract developers can use this to test their contracts
  */
 contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
-  using SafeMath for uint256;
+  using SafeMathChainlink for uint256;
 
   uint256 constant public EXPIRY_TIME = 5 minutes;
   uint256 constant private MINIMUM_CONSUMER_GAS_LIMIT = 400000;
