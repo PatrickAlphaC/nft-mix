@@ -66,6 +66,8 @@ def write_metadata(token_ids, nft_contract):
             if os.getenv("UPLOAD_IPFS") == "true":
                 upload_to_ipfs(metadata_file_name)
 
+# curl -X POST -F file=@metadata/rinkeby/0-SHIBA_INU.json http://localhost:5001/api/v0/add
+
 
 def upload_to_ipfs(filepath):
     with Path(filepath).open("rb") as fp:
