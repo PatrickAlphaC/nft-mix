@@ -61,8 +61,8 @@ def write_metadata(token_ids, nft_contract):
                 breed_to_image_uri[breed] if not image_to_upload else image_to_upload
             )
             collectible_metadata["image"] = image_to_upload
-            file = open(metadata_file_name, "w")
-            json.dump(collectible_metadata, file)
+            with open(metadata_file_name, "w") as file:
+                json.dump(collectible_metadata, file)
             if os.getenv("UPLOAD_IPFS") == "true":
                 upload_to_ipfs(metadata_file_name)
 
