@@ -63,7 +63,8 @@ def write_metadata(token_ids, nft_contract):
             collectible_metadata["image"] = image_to_upload
             file = open(metadata_file_name, "w")
             json.dump(collectible_metadata, file)
-            upload_to_ipfs(metadata_file_name)
+            if os.getenv("UPLOAD_IPFS") == "true":
+                upload_to_ipfs(metadata_file_name)
 
 
 def upload_to_ipfs(filepath):
