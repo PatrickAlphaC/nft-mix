@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from brownie import SimpleCollectible, AdvancedCollectible, accounts, network, config
 from metadata import sample_metadata
-from scripts.helpful_scripts import get_breed
+from scripts.helpful_scripts import get_breed, OPENSEA_FORMAT
 
 
 dog_metadata_dic = {
@@ -9,8 +9,6 @@ dog_metadata_dic = {
     "SHIBA_INU": "https://ipfs.io/ipfs/QmdryoExpgEQQQgJPoruwGJyZmz6SqV4FRTX1i73CT3iXn?filename=1-SHIBA_INU.json",
     "ST_BERNARD": "https://ipfs.io/ipfs/QmbBnUjyHHN7Ytq9xDsYF9sucZdDJLRkWz7vnZfrjMXMxs?filename=2-ST_BERNARD.json",
 }
-OPENSEA_FORMAT = "https://testnets.opensea.io/assets/{}/{}"
-
 
 def main():
     print("Working on " + network.show_active())

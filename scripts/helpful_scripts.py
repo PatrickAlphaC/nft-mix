@@ -1,5 +1,6 @@
 from brownie import accounts, AdvancedCollectible, config, interface, network
 
+OPENSEA_FORMAT = "https://testnets.opensea.io/assets/{}/{}"
 
 def get_breed(breed_number):
     switch = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
