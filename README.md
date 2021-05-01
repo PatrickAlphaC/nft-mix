@@ -143,6 +143,21 @@ Run
 brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
 ```
 And after some time, (you may have to wait up to 20 minutes for it to render on opensea), you should see your NFT on opensea! [It'll look something like this.](https://testnets.opensea.io/assets/0x8acb7ca932892eb83e4411b59309d44dddbc4cdf/0)
+
+## *NEW* Pinata
+
+If you want to auto-upload to pinata instead of IPFS automatically, you can do so by getting a [Pinata API Key.](https://pinata.cloud/documentation#GettingStarted)
+
+You'll need the following environment variables (you can get them from Pinata)
+```
+PINATA_API_KEY
+PINATA_API_SECRET
+```
+Then run:
+```
+python scripts/upload_to_pinata.py
+```
+
 ## Testing
 
 ```
