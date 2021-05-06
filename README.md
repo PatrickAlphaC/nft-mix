@@ -27,6 +27,13 @@ Please install or have installed the following:
 ```bash
 pip install eth-brownie
 ```
+Or, if that doesn't work, via pipx
+```bash
+pip install --user pipx
+pipx ensurepath
+# restart your terminal
+pipx install eth-brownie
+```
 
 2. Clone this repo
 ```
