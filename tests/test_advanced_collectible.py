@@ -8,7 +8,6 @@ def test_can_create_advanced_collectible(
     get_keyhash,
     get_link_token,
     chainlink_fee,
-    get_seed,
 ):
     # Arrange
     if network.show_active() not in ["development"] or "fork" in network.show_active():
@@ -24,7 +23,7 @@ def test_can_create_advanced_collectible(
     )
     # Act
     transaction_receipt = advanced_collectible.createCollectible(
-        "None", get_seed, {"from": get_account}
+        "None", {"from": get_account}
     )
     requestId = transaction_receipt.events["requestedCollectible"]["requestId"]
     assert isinstance(transaction_receipt.txid, str)

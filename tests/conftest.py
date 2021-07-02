@@ -91,11 +91,6 @@ def get_job_id():
 
 
 @pytest.fixture
-def get_seed():
-    return 777
-
-
-@pytest.fixture
 def get_data():
     return 100
 
