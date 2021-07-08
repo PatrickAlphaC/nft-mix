@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from brownie import AdvancedCollectible, accounts, network, config
-from scripts.helpful_scripts import fund_advanced_collectible
+from scripts.helpful_scripts import fund_with_link
 
 
 def main():
@@ -15,5 +15,5 @@ def main():
         {"from": dev},
         publish_source=publish_source,
     )
-    fund_advanced_collectible(advanced_collectible)
+    fund_with_link(advanced_collectible.address)
     return advanced_collectible

@@ -4,6 +4,7 @@ from scripts.helpful_scripts import OPENSEA_FORMAT
 
 sample_token_uri = "https://ipfs.io/ipfs/Qmd9MCGtdVz2miNumBHDbvj8bigSgTwnr4SbyH6DNnpWdt?filename=0-PUG.json"
 
+
 def main():
     dev = accounts.add(config["wallets"]["from_key"])
     print(network.show_active())

@@ -73,6 +73,11 @@ def get_contract(contract_name):
     return contract
 
 
+def get_breed(breed_number):
+    switch = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
+    return switch[breed_number]
+
+
 def fund_with_link(
     contract_address, account=None, link_token=None, amount=1000000000000000000
 ):
@@ -81,7 +86,7 @@ def fund_with_link(
     tx = interface.LinkTokenInterface(link_token).transfer(
         contract_address, amount, {"from": account}
     )
-    print("Funded {}".format(contract_address.address))
+    print(f"Funded {contract_address}")
     return tx
 
 

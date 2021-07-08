@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 import os
 from brownie import SimpleCollectible, accounts, network, config
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
 def main():
