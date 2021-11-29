@@ -1,6 +1,9 @@
 import requests
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 PINATA_BASE_URL = 'https://api.pinata.cloud/'
 endpoint = 'pinning/pinFileToIPFS'
