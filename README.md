@@ -114,13 +114,11 @@ brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
 brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
 ```
 
-## Verify on Etherscan
+# Verify on Etherscan
 
-> Looking for help fixing this!
+The simple contract and the advanced contract can be verified if you just set your `ETHERSCAN_TOKEN`. 
 
-Currently, the advanced collectibles contract has an issue with ERC721 and the Chainlink contracts, so they have be verified manually. However, the simple contract can be verified if you just set your `ETHERSCAN_TOKEN`. 
-
-### Misc
+## Misc
 There are some helpful scripts in `helpful_scripts.py`.
 
 # Viewing on OpenSea
