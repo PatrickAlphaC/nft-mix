@@ -9,6 +9,7 @@ from brownie import (
     VRFCoordinatorMock,
     Contract,
 )
+import os
 
 OPENSEA_FORMAT = "https://testnets.opensea.io/assets/{}/{}"
 NON_FORKED_LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat", "development", "ganache"]
@@ -75,6 +76,11 @@ def get_contract(contract_name):
             )
     return contract
 
+def get_publish_source():
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS or not os.getenv("ETHERSCAN_TOKEN"):
+        return False
+    else: 
+        return True
 
 def get_breed(breed_number):
     switch = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
