@@ -11,9 +11,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 breed_to_image_uri = {
-    "PUG": "https://ipfs.io/ipfs/QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8?filename=pug.png",
-    "SHIBA_INU": "https://ipfs.io/ipfs/QmYx6GsYAKnNzZ9A6NvEKV9nf1VaDzJrqDR23Y8YSkebLU?filename=shiba-inu.png",
-    "ST_BERNARD": "https://ipfs.io/ipfs/QmUPjADFGEKmfohdTaNcWhp7VGk26h5jXDA7v3VtTnTLcW?filename=st-bernard.png",
+    "PUG": "ipfs://QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8?filename=pug.png",
+    "SHIBA_INU": "ipfs://QmYx6GsYAKnNzZ9A6NvEKV9nf1VaDzJrqDR23Y8YSkebLU?filename=shiba-inu.png",
+    "ST_BERNARD": "ipfs://QmUPjADFGEKmfohdTaNcWhp7VGk26h5jXDA7v3VtTnTLcW?filename=st-bernard.png",
 }
 
 
@@ -81,7 +81,7 @@ def upload_to_ipfs(filepath):
                                  files={"file": image_binary})
         ipfs_hash = response.json()["Hash"]
         filename = filepath.split("/")[-1:][0]
-        image_uri = "https://ipfs.io/ipfs/{}?filename={}".format(
+        image_uri = "ipfs://{}?filename={}".format(
             ipfs_hash, filename)
         print(image_uri)
     return image_uri
