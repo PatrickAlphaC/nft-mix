@@ -11,7 +11,9 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
     mapping(bytes32 => string) public requestIdToTokenURI;
     mapping(uint256 => Breed) public tokenIdToBreed;
     mapping(bytes32 => uint256) public requestIdToTokenId;
-    event requestedCollectible(bytes32 indexed requestId); 
+    event RequestedCollectible(bytes32 indexed requestId); 
+    // New event from the video!
+    event ReturnedCollectible(bytes32 indexed requestId, uint256 randomNumber);
 
 
     bytes32 internal keyHash;
@@ -32,7 +34,7 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
             bytes32 requestId = requestRandomness(keyHash, fee);
             requestIdToSender[requestId] = msg.sender;
             requestIdToTokenURI[requestId] = tokenURI;
-            emit requestedCollectible(requestId);
+            emit RequestedCollectible(requestId);
     }
 
     function fulfillRandomness(bytes32 requestId, uint256 randomNumber) internal override {
@@ -45,6 +47,7 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
         tokenIdToBreed[newItemId] = breed;
         requestIdToTokenId[requestId] = newItemId;
         tokenCounter = tokenCounter + 1;
+        emit ReturnedCollectible(requestId, randomNumber);
     }
 
     function setTokenURI(uint256 tokenId, string memory _tokenURI) public {

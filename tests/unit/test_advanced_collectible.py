@@ -27,7 +27,7 @@ def test_can_create_advanced_collectible(
     transaction_receipt = advanced_collectible.createCollectible(
         "None", {"from": get_account()}
     )
-    requestId = transaction_receipt.events["requestedCollectible"]["requestId"]
+    requestId = transaction_receipt.events["RequestedCollectible"]["requestId"]
     assert isinstance(transaction_receipt.txid, str)
     get_contract("vrf_coordinator").callBackWithRandomness(
         requestId, 777, advanced_collectible.address, {"from": get_account()}

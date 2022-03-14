@@ -8,8 +8,14 @@ from brownie import (
     MockOracle,
     VRFCoordinatorMock,
     Contract,
+    web3,
+    chain,
 )
 import os
+import time
+
+# Set a default gas price
+from brownie.network import priority_fee
 
 OPENSEA_FORMAT = "https://testnets.opensea.io/assets/{}/{}"
 NON_FORKED_LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat", "development", "ganache"]
@@ -76,11 +82,15 @@ def get_contract(contract_name):
             )
     return contract
 
+
 def get_publish_source():
-    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS or not os.getenv("ETHERSCAN_TOKEN"):
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS or not os.getenv(
+        "ETHERSCAN_TOKEN"
+    ):
         return False
-    else: 
+    else:
         return True
+
 
 def get_breed(breed_number):
     switch = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
@@ -112,6 +122,8 @@ def deploy_mocks(decimals=18, initial_value=2000):
     """
     Use this script if you want to deploy mocks to a testnet
     """
+    # Set a default gas price
+    priority_fee("1 gwei")
     print(f"The active network is {network.show_active()}")
     print("Deploying Mocks...")
     account = get_account()
@@ -124,7 +136,7 @@ def deploy_mocks(decimals=18, initial_value=2000):
     print(f"Deployed to {mock_price_feed.address}")
     print("Deploying Mock VRFCoordinator...")
     mock_vrf_coordinator = VRFCoordinatorMock.deploy(
-        link_token.address, {"from": account}
+        link_token.address, {"from": account, "gas_price": chain.base_fee}
     )
     print(f"Deployed to {mock_vrf_coordinator.address}")
 
@@ -132,3 +144,36 @@ def deploy_mocks(decimals=18, initial_value=2000):
     mock_oracle = MockOracle.deploy(link_token.address, {"from": account})
     print(f"Deployed to {mock_oracle.address}")
     print("Mocks Deployed!")
+
+
+def listen_for_event(brownie_contract, event, timeout=200, poll_interval=2):
+    """Listen for an event to be fired from a contract.
+    We are waiting for the event to return, so this function is blocking.
+
+    Args:
+        brownie_contract ([brownie.network.contract.ProjectContract]):
+        A brownie contract of some kind.
+
+        event ([string]): The event you'd like to listen for.
+
+        timeout (int, optional): The max amount in seconds you'd like to
+        wait for that event to fire. Defaults to 200 seconds.
+
+        poll_interval ([int]): How often to call your node to check for events.
+        Defaults to 2 seconds.
+    """
+    web3_contract = web3.eth.contract(
+        address=brownie_contract.address, abi=brownie_contract.abi
+    )
+    start_time = time.time()
+    current_time = time.time()
+    event_filter = web3_contract.events[event].createFilter(fromBlock="latest")
+    while current_time - start_time < timeout:
+        for event_response in event_filter.get_new_entries():
+            if event in event_response.event:
+                print("Found event!")
+                return event_response
+        time.sleep(poll_interval)
+        current_time = time.time()
+    print("Timeout reached, no event found.")
+    return {"event": None}
