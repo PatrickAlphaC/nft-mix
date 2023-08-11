@@ -1,4 +1,7 @@
+> Update: The code has been modified to use Sepolia as Rinkeby Testnet is not supported anymore.
+
 > Update: You should use `ipfs://` instead of `https://ipfs.io/` for your tokenURI
+
 
 # nft-mix
 
@@ -57,7 +60,7 @@ Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](htt
 
 You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/). 
 
-You'll also need testnet rinkeby ETH and LINK. You can get LINK and ETH into your wallet by using the [rinkeby faucets located here](https://faucets.chain.link/rinkeby). If you're new to this, [watch this video.](https://www.youtube.com/watch?v=P7FX_1PePX0)
+You'll also need testnet Sepolia ETH and LINK. You can get LINK and ETH into your wallet by using the [Sepolia faucets located here](https://faucets.chain.link/sepolia). If you're new to this, [watch this video.](https://www.youtube.com/watch?v=P7FX_1PePX0)
 
 You can add your environment variables to the `.env` file:
 
@@ -88,30 +91,30 @@ They each deploy unique dogs. The advanced version gives you a random breed (out
 
 The advanced collection uses a [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number) to deploy the random dog. 
 
-You can 100% use the rinkeby testnet to see your NFTs rendered on opensea, but it's suggested that you test and build on a local development network so you don't have to wait as long for transactions. 
+You can 100% use the Sepolia testnet to see your NFTs rendered on opensea, but it's suggested that you test and build on a local development network so you don't have to wait as long for transactions. 
 
 ### Running Scripts
 
-The simple collectibles work on a local network,  however the advanced requires a testnet. We default to rinkeby since that seems to be the testing standard for NFT platforms. You will need testnet rinkeby ETH and testnet Rinkeby LINK. You can find faucets for both in the [Chainlink documentation](https://docs.chain.link/docs/link-token-contracts#rinkeby). 
+The simple collectibles work on a local network, however the advanced requires a testnet. When the video tutorial was launched, Rinkeby was used, but ever since it was discountinued we have switched to Sepolia as it is the testing standard for NFT platforms. You will need testnet Sepolia ETH and testnet Sepolia LINK. You can find faucets for both in the [Chainlink documentation](https://docs.chain.link/resources/link-token-contracts). 
 
 # For the Simple ERC721
 ```
-brownie run scripts/simple_collectible/deploy_simple.py --network rinkeby
-brownie run scripts/simple_collectible/create_collectible.py --network rinkeby
+brownie run scripts/simple_collectible/deploy_simple.py --network sepolia
+brownie run scripts/simple_collectible/create_collectible.py --network sepolia
 ```
 
 # For the Advanced ERC721
 
-You'll need [testnet Rinkeby](https://faucet.rinkeby.io/) and [testnet LINK](https://rinkeby.chain.link/) in the wallet associated with your private key. 
+You'll need [testnet ETH](https://sepoliafaucet.com/) and [testnet LINK](https://faucets.chain.link/sepolia/) in the wallet associated with your private key. 
 
 ```
-brownie run scripts/advanced_collectible/deploy_advanced.py --network rinkeby
-brownie run scripts/advanced_collectible/create_collectible.py --network rinkeby
+brownie run scripts/advanced_collectible/deploy_advanced.py --network sepolia
+brownie run scripts/advanced_collectible/create_collectible.py --network sepolia
 ```
 Then:
 ```
-brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
-brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
+brownie run scripts/advanced_collectible/create_metadata.py --network sepolia
+brownie run scripts/advanced_collectible/set_tokenuri.py --network sepolia
 ```
 
 # Verify on Etherscan
@@ -137,22 +140,22 @@ Set `export IPFS_URL=http://127.0.0.1:5001` and `export UPLOAD_IPFS=true` enviro
 Run the IPFS daemon: `ipfs daemon`
 Then Run
 ```
-brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
+brownie run scripts/advanced_collectible/create_metadata.py --network sepolia
 ```
 
 Alternatively, you could upload the uri manually:
-Add the file created in `metadata/rinkeby/NAME.json` to [IPFS](https://ipfs.io/) or [Pinata](https://pinata.cloud/). 
+Add the file created in `metadata/sepolia/NAME.json` to [IPFS](https://ipfs.io/) or [Pinata](https://pinata.cloud/). 
 ### If you want to use the metadata from this repo
 
 Just run:
 ```
-brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
+brownie run scripts/advanced_collectible/create_metadata.py --network sepolia
 ```
 
 2. Set the tokenURI 
 Run
 ```
-brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
+brownie run scripts/advanced_collectible/set_tokenuri.py --network sepolia
 ```
 And after some time, (you may have to wait up to 20 minutes for it to render on opensea), you should see your NFT on opensea! [It'll look something like this.](https://testnets.opensea.io/assets/0x8acb7ca932892eb83e4411b59309d44dddbc4cdf/0)
 
