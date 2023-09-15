@@ -7,10 +7,9 @@ def main():
     print(network.show_active())
     advanced_collectible = AdvancedCollectible.deploy(
         config["networks"][network.show_active()]["vrf_coordinator"],
-        config["networks"][network.show_active()]["link_token"],
-        config["networks"][network.show_active()]["keyhash"],
+        config["networks"][network.show_active()]["subscriptionId"],
+        config["networks"][network.show_active()]["keyHash"],
         {"from": dev},
         publish_source=get_publish_source(),
     )
-    fund_with_link(advanced_collectible.address)
     return advanced_collectible

@@ -4,19 +4,27 @@ reports:
   exclude_contracts:
     - SafeMath
 dependencies:
-  - smartcontractkit/chainlink-brownie-contracts@1.1.1
-  - OpenZeppelin/openzeppelin-contracts@3.4.0
+  - smartcontractkit/chainlink@2.0.0
+  - OpenZeppelin/openzeppelin-contracts@4.1.0
 compiler:
   solc:
     remappings:
-      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
-      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0'
+      - "@chainlink=smartcontractkit/chainlink@2.0.0"
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0"
 # automatically fetch contract sources from Etherscan
 autofetch_sources: True
 dotenv: .env
 # set a custom mnemonic for the development network
 networks:
   default: development
+  sepolia:
+    vrf_coordinator: "0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625"
+    link: "0x779877A7B0D9E8603169DdbD7836e478b4624789"
+    keyHash: "0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c"
+    #Add your own subscriptionId - https://docs.chain.link/vrf/v2/subscription/
+    subscriptionId: "3690"
+    fee: 100000000000000000
+    verify: False
   kovan:
     vrf_coordinator: '0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9'
     link_token: '0xa36085F69e2889c224210F603D836748e7dC0088'
