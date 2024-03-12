@@ -1,6 +1,6 @@
 > Update: The code has been modified to use Sepolia as Rinkeby Testnet is not supported anymore.
 
-> Update: You should use `ipfs://` instead of `https://ipfs.io/` for your tokenURI
+> Update: You should use `ipfs://` instead of `https://ipfs.io/` for your tokenURI.
 
 
 # nft-mix
