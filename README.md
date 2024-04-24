@@ -95,7 +95,7 @@ You can 100% use the Sepolia testnet to see your NFTs rendered on opensea, but i
 
 ### Running Scripts
 
-The simple collectibles work on a local network, however the advanced requires a testnet. When the video tutorial was launched, Rinkeby was used, but ever since it was discountinued we have switched to Sepolia as it is the testing standard for NFT platforms. You will need testnet Sepolia ETH and testnet Sepolia LINK. You can find faucets for both in the [Chainlink documentation](https://docs.chain.link/resources/link-token-contracts). 
+The simple collectibles work on a local network, however the advanced requires a testnet. When the video tutorial was launched, Rinkeby was used, but ever since it was discontinued we have switched to Sepolia as it is the testing standard for NFT platforms. You will need testnet Sepolia ETH and testnet Sepolia LINK. You can find faucets for both in the [Chainlink documentation](https://docs.chain.link/resources/link-token-contracts). 
 
 # For the Simple ERC721
 ```

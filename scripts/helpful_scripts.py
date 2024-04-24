@@ -54,12 +54,12 @@ def get_contract(contract_name):
             - Or deploy a mock to use for a network that doesn't have it
 
         Args:
-            contract_name (string): This is the name that is refered to in the
+            contract_name (string): This is the name that is referred to in the
             brownie config and 'contract_to_mock' variable.
 
         Returns:
             brownie.network.contract.ProjectContract: The most recently deployed
-            Contract of the type specificed by the dictonary. This could be either
+            Contract of the type specified by the dictionary. This could be either
             a mock or the 'real' contract on a live network.
     """
     contract_type = contract_to_mock[contract_name]
